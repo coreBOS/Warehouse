@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_warehouse</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_warehouse` (
+  `warehouseid` int(11) DEFAULT NULL,
+  `warehno` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `phone` varchar(35) DEFAULT NULL,
+  `fax` varchar(35) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(80) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `zipcode` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`warehouseid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+		</table>
+		<table>
+			<name>vtiger_warehousecf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_warehousecf` (
+  `warehouseid` int(11) NOT NULL,
+  PRIMARY KEY (`warehouseid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+		</table>
+	</tables>
+</schema>
