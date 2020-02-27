@@ -8,7 +8,7 @@
  * All Rights Reserved.
  ************************************************************************************/
 
-$mod_strings = Array(
+$mod_strings = array(
 	'Warehouse' => 'Almacén',
 	'SINGLE_Warehouse' => 'Almacén',
 	'Warehouse ID' => 'Almacén ID',
@@ -29,5 +29,4 @@ $mod_strings = Array(
 	'Zip Code' => 'Código Postal',
 	'CannotDelete'=>'Este almacén no se puede eliminar, se utiliza para gestión interna.',
 );
-
 ?>

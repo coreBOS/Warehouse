@@ -7,5 +7,14 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  ************************************************************************************/
-require_once 'modules/Vtiger/Save.php';
+
+$mod_strings = array(
+	'ModuleName' => 'Module Name',
+	'SINGLE_ModuleName' => 'Module Name',
+	'ModuleName ID' => 'Module Name ID',
+
+	'LBL_CUSTOM_INFORMATION' => 'Información Personalizada',
+	'LBL_MODULEBLOCK_INFORMATION' => 'Información ModuleName',
+	'LBL_DESCRIPTION_INFORMATION' => 'Descripción',
+);
 ?>

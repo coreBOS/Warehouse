@@ -4,7 +4,7 @@
 		<table>
 			<name>vtiger_warehouse</name>
 			<sql><![CDATA[CREATE TABLE `vtiger_warehouse` (
-  `warehouseid` int(11) DEFAULT NULL,
+  `warehouseid` int(11) NOT NULL,
   `warehno` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `phone` varchar(35) DEFAULT NULL,
