@@ -11,9 +11,6 @@ require_once 'data/CRMEntity.php';
 require_once 'data/Tracker.php';
 
 class Warehouse extends CRMEntity {
-	public $db;
-	public $log;
-
 	public $table_name = 'vtiger_warehouse';
 	public $table_index= 'warehouseid';
 	public $column_fields = array();
@@ -104,31 +101,7 @@ class Warehouse extends CRMEntity {
 	// Refers to vtiger_field.fieldname values.
 	public $mandatory_fields = array('createdtime', 'modifiedtime', 'title');
 
-	function getSortOrder() {
-		global $currentModule;
-		$sortorder = $this->default_sort_order;
-		if($_REQUEST['sorder']) $sortorder = $this->db->sql_escape_string($_REQUEST['sorder']);
-		else if($_SESSION[$currentModule.'_Sort_Order']) 
-			$sortorder = $_SESSION[$currentModule.'_Sort_Order'];
-		return $sortorder;
-	}
-
-	function getOrderBy() {
-		global $currentModule;
-		
-		$use_default_order_by = '';		
-		if(PerformancePrefs::getBoolean('LISTVIEW_DEFAULT_SORTING', true)) {
-			$use_default_order_by = $this->default_order_by;
-		}
-		
-		$orderby = $use_default_order_by;
-		if($_REQUEST['order_by']) $orderby = $this->db->sql_escape_string($_REQUEST['order_by']);
-		else if($_SESSION[$currentModule.'_Order_By'])
-			$orderby = $_SESSION[$currentModule.'_Order_By'];
-		return $orderby;
-	}
-
-public function save_module($module) {
+	public function save_module($module) {
 		if ($this->HasDirectImageField) {
 			$this->insertIntoAttachment($this->id, $module);
 		}
@@ -146,12 +119,12 @@ public function save_module($module) {
 
 	/**
 	 * Invoked when special actions are performed on the module.
-	 * @param String Module name
-	 * @param String Event Type (module.postinstall, module.disabled, module.enabled, module.preuninstall)
+	 * @param string Module name
+	 * @param string Event Type (module.postinstall, module.disabled, module.enabled, module.preuninstall)
 	 */
 	public function vtlib_handler($modulename, $event_type) {
 		if ($event_type == 'module.postinstall') {
-			// TODO Handle post installation actions
+			// Handle post installation actions
 			$this->setModuleSeqNumber('configure', $modulename, 'WH-', '0000001');
 			global $current_user,$adb;
 			// Product stock Readonly
@@ -160,17 +133,17 @@ public function save_module($module) {
 			$module->addLink('HEADERSCRIPT', 'AddressCaptureFunctions', 'modules/Warehouse/Warehouse.js');
 			Warehouse::addWarehouseFields();
 		} elseif ($event_type == 'module.disabled') {
-			// TODO Handle actions when this module is disabled.
+			// Handle actions when this module is disabled.
 		} elseif ($event_type == 'module.enabled') {
-			// TODO Handle actions when this module is enabled.
+			// Handle actions when this module is enabled.
 		} elseif ($event_type == 'module.preuninstall') {
-			// TODO Handle actions when this module is about to be deleted.
+			// Handle actions when this module is about to be deleted.
 			// Product stock ReadWrite
 			$adb->query("UPDATE vtiger_field SET displaytype='1' WHERE vtiger_field.columnname='qtyinstock' and tabid=14");
 		} elseif ($event_type == 'module.preupdate') {
-			// TODO Handle actions before this module is updated.
+			// Handle actions before this module is updated.
 		} elseif ($event_type == 'module.postupdate') {
-			// TODO Handle actions after this module is updated.
+			// Handle actions after this module is updated.
 		}
 	}
 
