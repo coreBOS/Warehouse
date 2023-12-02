@@ -9,12 +9,24 @@
  ************************************************************************************/
 
 $mod_strings = array(
-	'ModuleName' => 'Module Name',
-	'SINGLE_ModuleName' => 'Module Name',
-	'ModuleName ID' => 'Module Name ID',
+	'Warehouse' => 'Almacén',
+	'SINGLE_Warehouse' => 'Almacén',
+	'Warehouse ID' => 'Almacén ID',
 
 	'LBL_CUSTOM_INFORMATION' => 'Información Personalizada',
-	'LBL_MODULEBLOCK_INFORMATION' => 'Información ModuleName',
+	'LBL_WAREHOUSE_INFORMATION' => 'Información del Almacén',
+	'LBL_ADDRESS_INF' => 'Dirección',
 	'LBL_DESCRIPTION_INFORMATION' => 'Descripción',
+
+	'WarehouseNo' => 'No Almacén',
+	'Title' => 'Nombre',
+	'LBL_PHONE' => 'Teléfono',
+	'Fax' => 'Fax',
+	'E-mail' => 'E-mail',
+	'Address' => 'Dirección',
+	'City' => 'Ciudad',
+	'State' => 'Provincia',
+	'Zip Code' => 'Código Postal',
+	'CannotDelete'=>'Este almacén no se puede eliminar, se utiliza para gestión interna.',
 );
 ?>

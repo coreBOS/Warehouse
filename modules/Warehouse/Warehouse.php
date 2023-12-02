@@ -18,7 +18,7 @@ class Warehouse extends CRMEntity {
 	/** Indicator if this is a custom module or standard module */
 	public $IsCustomModule = true;
 	public $HasDirectImageField = false;
-	public $moduleIcon = array('library' => 'standard', 'containerClass' => 'slds-icon_container slds-icon-standard-account', 'class' => 'slds-icon', 'icon'=>'account');
+	public $moduleIcon = array('library' => 'standard', 'containerClass' => 'slds-icon_container slds-icon-standard-account', 'class' => 'slds-icon', 'icon'=>'home');
 
 	/**
 	 * Mandatory table for supporting custom fields.
@@ -38,7 +38,8 @@ class Warehouse extends CRMEntity {
 	public $tab_name_index = array(
 		'vtiger_crmentity' => 'crmid',
 		'vtiger_warehouse'   => 'warehouseid',
-		'vtiger_warehousecf' => 'warehouseid');
+		'vtiger_warehousecf' => 'warehouseid',
+	);
 
 	/**
 	 * Mandatory for Listing (Related listview)
@@ -107,7 +108,7 @@ class Warehouse extends CRMEntity {
 		}
 	}
 
-	function trash($module, $id) {
+	public function trash($module, $id) {
 		global $adb;
 		$warehno=$adb->getone("select warehno from vtiger_warehouse where warehouseid=$id");
 		if ($warehno=='Purchase' or $warehno=='Sale') {
@@ -147,16 +148,16 @@ class Warehouse extends CRMEntity {
 		}
 	}
 
-	static function addWarehouseFields() {
+	public static function addWarehouseFields() {
 		// Turn on debugging level
 		$Vtiger_Utils_Log = true;
 		global $adb;
-		include_once('vtlib/Vtiger/Module.php');
+		include_once 'vtlib/Vtiger/Module.php';
 
 		$modSO = Vtiger_Module::getInstance('SalesOrder');
-		if($modSO) {
+		if ($modSO) {
 			$block1= VTiger_Block::getInstance('LBL_SO_INFORMATION',$modSO);
-			if($block1) {
+			if ($block1) {
 				$field1 = new Vtiger_Field();
 				$field1->name = 'whid';
 				$field1->label= 'Warehouse';
@@ -178,9 +179,9 @@ class Warehouse extends CRMEntity {
 		}
 
 		$modPO = Vtiger_Module::getInstance('PurchaseOrder');
-		if($modPO) {
+		if ($modPO) {
 			$block1= VTiger_Block::getInstance('LBL_PO_INFORMATION',$modPO);
-			if($block1) {
+			if ($block1) {
 				$field1 = new Vtiger_Field();
 				$field1->name = 'whid';
 				$field1->label= 'Warehouse';
@@ -202,7 +203,7 @@ class Warehouse extends CRMEntity {
 		}
 
 		$modInvoice= Vtiger_Module::getInstance('Invoice');
-		if($modInvoice) {
+		if ($modInvoice) {
 			$block1= VTiger_Block::getInstance('LBL_INVOICE_INFORMATION',$modInvoice);
 			if($block1) {
 				$field1 = new Vtiger_Field();
@@ -226,9 +227,9 @@ class Warehouse extends CRMEntity {
 		}
 
 		$modQuote= Vtiger_Module::getInstance('Quotes');
-		if($modQuote) {
+		if ($modQuote) {
 			$block1= VTiger_Block::getInstance('LBL_QUOTE_INFORMATION',$modQuote);
-			if($block1) {
+			if ($block1) {
 				$field1 = new Vtiger_Field();
 				$field1->name = 'whid';
 				$field1->label= 'Warehouse';
@@ -249,33 +250,5 @@ class Warehouse extends CRMEntity {
 			echo "<b>Failed to find ".$modQuote->name." module.</b><br>";
 		}
 	}
-
-	/** 
-	 * Handle saving related module information.
-	 * NOTE: This function has been added to CRMEntity (base class).
-	 * You can override the behavior by re-defining it here.
-	 */
-	// public function save_related_module($module, $crmid, $with_module, $with_crmid) { }
-
-	/**
-	 * Handle deleting related module information.
-	 * NOTE: This function has been added to CRMEntity (base class).
-	 * You can override the behavior by re-defining it here.
-	 */
-	//public function delete_related_module($module, $crmid, $with_module, $with_crmid) { }
-
-	/**
-	 * Handle getting related list information.
-	 * NOTE: This function has been added to CRMEntity (base class).
-	 * You can override the behavior by re-defining it here.
-	 */
-	//public function get_related_list($id, $cur_tab_id, $rel_tab_id, $actions=false) { }
-
-	/**
-	 * Handle getting dependents list information.
-	 * NOTE: This function has been added to CRMEntity (base class).
-	 * You can override the behavior by re-defining it here.
-	 */
-	//public function get_dependents_list($id, $cur_tab_id, $rel_tab_id, $actions=false) { }
 }
 ?>

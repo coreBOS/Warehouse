@@ -11,13 +11,23 @@
 $mod_strings = array(
 	'Warehouse' => 'Warehouse',
 	'SINGLE_Warehouse' => 'Warehouse',
+	'Warehouse ID' => 'Warehouse ID',
 
-	'LBL_WAREHOUSE_INFORMATION' => 'Warehouse Information',
 	'LBL_CUSTOM_INFORMATION' => 'Custom Information',
+	'LBL_WAREHOUSE_INFORMATION' => 'Warehouse Information',
+	'LBL_ADDRESS_INF' => 'Address Information',
 	'LBL_DESCRIPTION_INFORMATION' => 'Description',
 
-	'Title' => 'Title',
 	'WarehouseNo' => 'Warehouse No',
+	'Title' => 'Title',
 	'LBL_PHONE' => 'Phone',
+	'Fax' => 'Fax',
+	'E-mail' => 'E-mail',
+	'Address' => 'Address',
+	'City' => 'City',
+	'State' => 'State',
+	'Zip Code' => 'Zip Code',
+	'CannotDelete' => 'This warehouse cannot be deleted, it is used by the application.',
+	'Warehouse ID' => 'Warehouse ID',
 );
 ?>
